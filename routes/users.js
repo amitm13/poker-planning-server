@@ -5,10 +5,13 @@ const UserController = require('../controllers/userController');
 
 const userController = new UserController();
 
-// Protect all routes
-router.use(authenticateUser);
+// Public routes (no authentication required)
+router.post('/register', userController.register);
+router.post('/login', userController.login);
+router.post('/password-reset', userController.requestPasswordReset);
 
-// User routes
+// Protected routes (authentication required)
+router.use(authenticateUser);
 router.get('/profile', userController.getProfile);
 router.put('/profile', userController.updateProfile);
 

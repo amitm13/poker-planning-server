@@ -1,6 +1,7 @@
-const { db } = require('../services/firebase');
+const { admin, db, auth } = require('./../services/firebase');
 
 class SessionController {
+
   // Create a new planning session
   async createSession(req, res) {
     try {
@@ -167,3 +168,5 @@ class SessionController {
     }
   }
 }
+
+module.exports = SessionController;
